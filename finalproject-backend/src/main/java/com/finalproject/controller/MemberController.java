@@ -4,6 +4,7 @@ import com.finalproject.model.Member;
 import com.finalproject.service.MemberService;
 import com.finalproject.service.MemberTripService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -27,7 +28,8 @@ public class MemberController {
     @Autowired
     private MemberTripService memberTripService;
 
-    private final String uploadDir = "C:/Users/HP/eclipse-workspace/FinalProject/src/main/java/com/finalproject/assets/"; // 📁 เปลี่ยนตำแหน่งจัดเก็บตามระบบคุณ
+    @Value("${upload.dir}")
+    private String uploadDir;
 
     @PostMapping("/login")
     public ResponseEntity<?> getlogin(@RequestBody Map<String, String> loginRequest) {

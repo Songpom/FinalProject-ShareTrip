@@ -1,5 +1,6 @@
 package com.finalproject.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,8 +18,9 @@ import java.nio.file.Files;
 @RequestMapping("/images")
 public class ImageController {
 
-    private final String imagePath = "C:/Users/HP/eclipse-workspace/FinalProject/src/main/java/com/finalproject/assets/"; // แก้ path ให้ตรงกับตำแหน่งเก็บรูป
 
+    @Value("${upload.dir}")
+    private String imagePath;
     @GetMapping("/{filename:.+}")
     public ResponseEntity<byte[]> getImage(@PathVariable String filename) {
         try {

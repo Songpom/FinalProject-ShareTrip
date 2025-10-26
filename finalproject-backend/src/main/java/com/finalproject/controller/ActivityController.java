@@ -6,6 +6,7 @@ import com.finalproject.model.MemberTripActivity;
 import com.finalproject.service.ActivityService;
 import jakarta.servlet.annotation.MultipartConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -25,8 +26,8 @@ import java.nio.file.Paths;
 @MultipartConfig
 public class ActivityController {
 
-    private final String uploadDir = "C:/Users/HP/eclipse-workspace/FinalProject/src/main/java/com/finalproject/assets/";
-
+    @Value("${upload.dir}")
+    private String uploadDir;
     @Autowired
     private ActivityService activityService;
 

@@ -12,6 +12,7 @@ import com.finalproject.service.TripService;
 import com.github.pheerathach.ThaiQRPromptPay;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -54,8 +55,8 @@ public class ExpendController {
     @Autowired
     private CheckSlipController checkSlip;
 
-    private final String uploadDir = "C:/Users/HP/eclipse-workspace/FinalProject/src/main/java/com/finalproject/assets/"; // 📁 เปลี่ยนตำแหน่งจัดเก็บตามระบบคุณ
-
+    @Value("${upload.dir}")
+    private String uploadDir;
 
     private static final long WINDOW_MINUTES = 15L; // หน้าต่างอนุโลมจริง
     private static final long SKEW_MINUTES   = 5L;  // เผื่อ clock skew แค่เล็กน้อย (2–5 นาที)

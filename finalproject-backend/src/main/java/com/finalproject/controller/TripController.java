@@ -9,6 +9,7 @@ import com.finalproject.service.MemberService;
 import com.finalproject.service.TripService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,8 +46,8 @@ public class TripController {
     @Autowired
     private ActivityRepository activityRepository;
 
-    private final String uploadDir = "C:/Users/HP/eclipse-workspace/FinalProject/src/main/java/com/finalproject/assets/"; // 📁 เปลี่ยนตำแหน่งจัดเก็บตามระบบคุณ
-
+    @Value("${upload.dir}")
+    private String uploadDir;
 
 //    // Get all trips
 //    @GetMapping
